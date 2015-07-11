@@ -1,0 +1,13 @@
+<ion-scroll zooming="false" direction="y" style="height: 500px">
+              <ul class="list">
+                  	<li class="item item-thumbnail-left" ng-repeat="shot in list.shots">
+                      {{shot.title}}  
+                      {{shot.created_at | filterDate: "MMM d, yyyy"}}
+                      <img ng-src="{{shot.image_url}}">
+                      <a href="#/shots/{{shot.id}}">go!</a>
+                  	</li>
+              </ul>
+</ion-scroll>
+
+<button ng-click="loadNextPage()"> Load More </button>
+

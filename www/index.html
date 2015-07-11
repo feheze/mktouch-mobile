@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html ng-app="mktouch">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title>Mktouch-mobile</title>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="lib/ionic/js/angular/angular-route.js"></script>
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/services.js"></script>
+    <script src="js/filters.js"></script>
+  </head>
+
+  <body>
+      <div ng-controller="FormCtrl">
+          <div class="bar bar-header bar-dark">
+              <h1 class="title">
+                  {{name}}
+                  <a href="#/popular">popular</a>
+                  <a href="#/everyone">everyone</a>
+                  <a href="#/debuts">debuts</a>
+              </h1>
+          </div>
+          <br><br><br>  
+          <button ng-click="formTeste()"> form teste</button>
+          <label class="item item-input">
+                <input type="text" placeholder="teste ng-model" ng-model="name">
+          </label>
+      </div>
+
+      <div ng-view> </div>
+
+  </body>
+</html>

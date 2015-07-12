@@ -10,7 +10,6 @@ mainCtrl.controller('ShotsListCtrl', function ($scope, $routeParams, dribbbleFac
 
 	dribbbleFactory.list(list).then(function (data){
 		$scope.list = data.data;
-		console.log('data from server:', data.data);
 	});
 
 	$scope.loadNextPage = function (){
@@ -36,7 +35,8 @@ mainCtrl.controller('FormCtrl', function (formFactory, $scope){
 
 	$scope.name = 'mktouch';
 
-	$scope.formTeste = function(){
-		formFactory.formResponse;
+	$scope.getForm = function(){
+
 	};
+
 });

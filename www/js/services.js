@@ -23,14 +23,25 @@ services.factory('dribbbleFactory', function ($http){
 });
 
 services.factory('formFactory', function ($http){
-	var formResponse = $http.get('https://api.typeform.io/v0.3/', {
-		"headers": { "x-api-token": "2570a9ab7e442a7ce51eb0c5739ea0f2"}  })
-	.success( function (data,status,headers, config){
-		console.log("form formResponse", data);
-	})
-	.error( function (data,status,headers, config) {
-		alert("error!");
-	});
 
-	return formResponse;
+	function getForm(){
+		$http.get('https://api.typeform.com/v0/form/aLCGpu?key=441d95a06f0780613b5ea7304c6c3e290fce6f58&completed=true', {
+		}).
+		  success(function(data, status, headers, config) {
+		    // this callback will be called asynchronously
+		    // when the response is available
+		    alert(data);
+		  }).
+		  error(function(data, status, headers, config) {
+		    // called asynchronously if an error occurs
+		    // or server returns response with an error status.
+		    alert(status)
+		  });
+	};
+
+	return {
+		typeFormJson: function(){
+			getForm();
+		}
+	}
 });

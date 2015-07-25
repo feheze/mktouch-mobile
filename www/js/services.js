@@ -22,15 +22,39 @@ services.factory('dribbbleFactory', function ($http){
 
 });
 
-services.factory('formFactory', function ($http){
-	var formResponse = $http.get('https://api.typeform.io/v0.3/', {
-		"headers": { "x-api-token": "2570a9ab7e442a7ce51eb0c5739ea0f2"}  })
-	.success( function (data,status,headers, config){
-		console.log("form formResponse", data);
-	})
-	.error( function (data,status,headers, config) {
-		alert("error!");
-	});
+services.factory('formFactory', function ($http, $rootScope){
 
-	return formResponse;
+	function loadJsonForm(scopeForm){
+		$http.get('https://api.typeform.com/v0/form/aLCGpu?key=441d95a06f0780613b5ea7304c6c3e290fce6f58&completed=true', {
+		}).
+		  success(function(data, status, headers, config) {
+		  	var myForm  = data;
+		  	console.log('myForm ', myForm);
+		    $rootScope.$broadcast('get:json:form',{json_form: myForm});
+		  }).
+		  error(function(data, status, headers, config) {
+		    alert('load json error: ' + status);
+		  }); 
+	};
+
+	function loadQuestion(questions, index){
+		var question = JSON.parse(questions[index].question)
+		console.log("QUESTION service >>>>>>> ", question);
+		$rootScope.$broadcast('get:question',{
+				ask: question.ask, 
+				type: question.type,
+				options: question.options.split(",")});
+	};
+
+	return{
+		getJsonForm: function(){
+			loadJsonForm();
+		},
+
+		getQuestion: function(questions, index){
+			loadQuestion(questions, index);
+		}
+	}
+
+	
 });

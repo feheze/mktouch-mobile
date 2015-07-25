@@ -10,7 +10,6 @@ mainCtrl.controller('ShotsListCtrl', function ($scope, $routeParams, dribbbleFac
 
 	dribbbleFactory.list(list).then(function (data){
 		$scope.list = data.data;
-		console.log('data from server:', data.data);
 	});
 
 	$scope.loadNextPage = function (){
@@ -33,10 +32,37 @@ mainCtrl.controller('ShotsCtrl', function ($scope, $routeParams, dribbbleFactory
 });
 
 mainCtrl.controller('FormCtrl', function (formFactory, $scope){
+	$scope.currentQuestion = 0;
+	$scope.ask = "";
+	var questions = {};
+	var question = {};
 
-	$scope.name = 'mktouch';
+	formFactory.getJsonForm($scope.myForm);
 
-	$scope.formTeste = function(){
-		formFactory.formResponse;
+	$scope.nextQuestion = function(){
+		var formIndexLength = questions.length;
+
+		formFactory.getQuestion(questions,$scope.currentQuestion);
+
+		if($scope.currentQuestion+1 === formIndexLength){
+			$scope.currentQuestion = 0;
+		}else{
+			$scope.currentQuestion = $scope.currentQuestion + 1;
+		}
 	};
+
+	$scope.$on('get:json:form', function (event, data){
+		questions = data.json_form.questions;
+		console.log('getForm: ', questions);
+	});
+
+	$scope.$on('get:question', function (event, data){
+		question.ask = data.ask;
+		question.type = data.type;
+		question.options = data.options;
+
+		$scope.ask = question.ask;
+	});
+
 });
+

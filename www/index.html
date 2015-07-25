@@ -23,25 +23,20 @@
     <script src="js/controllers.js"></script>
     <script src="js/services.js"></script>
     <script src="js/filters.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
   </head>
 
   <body>
-      <div ng-controller="FormCtrl">
-          <div class="bar bar-header bar-dark">
-              <h1 class="title">
-                  {{name}}
-                  <a href="#/popular">popular</a>
-                  <a href="#/everyone">everyone</a>
-                  <a href="#/debuts">debuts</a>
-              </h1>
-          </div>
-          <br><br><br>  
-          <button ng-click="formTeste()"> form teste</button>
-          <label class="item item-input">
-                <input type="text" placeholder="teste ng-model" ng-model="name">
-          </label>
+      <div class="bar bar-header bar-dark">
+          <h1 class="title">
+              <a href="#/form">forms</a>
+              <a href="#/popular">popular</a>
+              <a href="#/everyone">everyone</a>
+              <a href="#/debuts">debuts</a>
+          </h1>
       </div>
-
+          
       <div ng-view> </div>
 
   </body>

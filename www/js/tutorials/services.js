@@ -22,7 +22,7 @@ services.factory('dribbbleFactory', function ($http){
 
 });
 
-services.factory('formFactory', function ($http, $rootScope){
+services.factory('formFactoryantigo', function ($http, $rootScope){
 
 	function loadJsonForm(scopeForm){
 		$http.get('https://api.typeform.com/v0/form/aLCGpu?key=441d95a06f0780613b5ea7304c6c3e290fce6f58&completed=true', {

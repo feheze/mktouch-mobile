@@ -31,7 +31,7 @@ mainCtrl.controller('ShotsCtrl', function ($scope, $routeParams, dribbbleFactory
 	});
 });
 
-mainCtrl.controller('FormCtrl', function (formFactory, $scope){
+mainCtrl.controller('FormCtrlteste', function (formFactory, $scope){
 	$scope.currentQuestion = 0;
 	$scope.ask = "";
 	var questions = {};
